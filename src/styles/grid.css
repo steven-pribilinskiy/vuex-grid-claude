@@ -1,0 +1,181 @@
+/**
+ * Grid layout styles.
+ *
+ * Uses CSS Grid to arrange the corner spacer, column ruler,
+ * row ruler and main scroll area into a fixed viewport layout.
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── Main wrapper ───────────────────────────────────── */
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  grid-template-rows: 30px 1fr;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ─── Corner spacer (where rulers meet) ──────────────── */
+.corner-spacer {
+  grid-row: 1;
+  grid-column: 1;
+  background: #e8e8e8;
+  border-right: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+}
+
+/* ─── Column ruler (top) ─────────────────────────────── */
+.column-ruler {
+  grid-row: 1;
+  grid-column: 2;
+  overflow: hidden;
+  position: relative;
+  background: #f0f0f0;
+  border-bottom: 1px solid #bbb;
+}
+
+.column-ruler__track {
+  position: relative;
+  height: 100%;
+  will-change: transform;
+}
+
+.column-ruler__cell {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #ddd;
+  color: #666;
+  font-size: 11px;
+  user-select: none;
+}
+
+/* ─── Row ruler (left) ───────────────────────────────── */
+.row-ruler {
+  grid-row: 2;
+  grid-column: 1;
+  overflow: hidden;
+  position: relative;
+  background: #f0f0f0;
+  border-right: 1px solid #bbb;
+}
+
+.row-ruler__track {
+  position: relative;
+  width: 100%;
+  will-change: transform;
+}
+
+.row-ruler__cell {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #ddd;
+  color: #666;
+  font-size: 11px;
+  user-select: none;
+}
+
+/* ─── Scroll container ───────────────────────────────── */
+.scroll-container {
+  grid-row: 2;
+  grid-column: 2;
+  overflow: auto;
+  position: relative;
+}
+
+/* ─── Grid cells ─────────────────────────────────────── */
+.grid-cell {
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  background: #fff;
+}
+
+.grid-cell--loading {
+  background: #fafafa;
+  justify-content: center;
+  color: #aaa;
+}
+
+.grid-cell__checkbox {
+  flex-shrink: 0;
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+.grid-cell__input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  padding: 2px 4px;
+  font-size: 13px;
+  height: 24px;
+  outline: none;
+}
+
+.grid-cell__input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.15);
+}
+
+.grid-cell__input--disabled {
+  background: #f0f0f0;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.grid-cell__loader {
+  font-size: 16px;
+  color: #ccc;
+}
+
+/* ─── Save button ────────────────────────────────────── */
+.save-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 10px 24px;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  transition: background 0.15s;
+}
+
+.save-button:hover {
+  background: #43a047;
+}
+
+.save-button:active {
+  background: #388e3c;
+}
